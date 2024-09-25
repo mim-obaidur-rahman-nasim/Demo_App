@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    
+    {
+      "name": "navbar_pages (Flutter macOS)",
+      "program": "lib/main.dart",
+      "deviceId": "macos",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "navbar_pages (Flutter)",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}
