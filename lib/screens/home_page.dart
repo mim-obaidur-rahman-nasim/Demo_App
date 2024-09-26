@@ -6,6 +6,11 @@ import 'package:url_launcher/url_launcher.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  Future<String> fetchData() async {
+    await Future.delayed(Duration(seconds: 3));
+    return "Data Loaded";
+  }
+
   void _launchURL() {
     const url = 'https://youtube.com';
     launchUrl(Uri.parse(url));
@@ -17,19 +22,13 @@ class HomeScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          'This is homepage',
+          'Welcome to homepage',
           style: TextStyle(
             color: Colors.blue,
             fontSize: 24,
           ),
         ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/ebs');
-          },
-          child: const Text('About Us'),
-        ),
+        const Expanded(child: DropDownSearch()),
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {
@@ -44,11 +43,29 @@ class HomeScreen extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/ebs');
+          },
+          child: const Text('About Us'),
+        ),
+        const SizedBox(height: 20),
+        ElevatedButton(
           onPressed: _launchURL,
           child: const Text('Open URL'),
         ),
         const SizedBox(height: 20),
-        const Expanded(child: DropDownSearch()),
+        FutureBuilder<String>(
+          future: fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else {
+              return Text(snapshot.data ??
+                  ""); //Instead of toString we can use that also
+            }
+          },
+        ),
+        const SizedBox(height: 20),
         CircularProgressIndicator(
           backgroundColor: Colors.blue,
           color: Colors.amber,

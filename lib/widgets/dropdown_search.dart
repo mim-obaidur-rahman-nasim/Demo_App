@@ -46,24 +46,26 @@ class _SearchableDropdownScreenState extends State<SearchableDropdown> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            DropdownSearch<String>(
-              items: items,
-              onChanged: (String? value) {
-                setState(() {
-                  selectedItem = value;
-                });
-              },
-              selectedItem: selectedItem ?? 'Select a Language',
-              popupProps: const PopupProps.menu(
-                showSearchBox: true,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              DropdownSearch<String>(
+                items: items,
+                onChanged: (String? value) {
+                  setState(() {
+                    selectedItem = value;
+                  });
+                },
+                selectedItem: selectedItem ?? 'Select a Language',
+                popupProps: const PopupProps.menu(
+                  showSearchBox: true,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-          ],
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

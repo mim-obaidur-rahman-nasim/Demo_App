@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navbar_pages/screens/ebs.dart';
 import 'package:navbar_pages/screens/home_page.dart';
+import 'package:navbar_pages/screens/webview_page.dart';
 import 'package:navbar_pages/widgets/contact_card.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     List<Widget> bodyItems = [
       const HomeScreen(),
-      const Center(child: Text('This is menu')),
+      const WebviewPage(),
       SingleChildScrollView(
         child: Column(
           children: const [
@@ -91,8 +92,8 @@ class _MainAppState extends State<MainApp> {
               icon: Icon(Icons.home),
             ),
             BottomNavigationBarItem(
-              label: 'Menu',
-              icon: Icon(Icons.menu),
+              label: 'Webview',
+              icon: Icon(Icons.web),
             ),
             BottomNavigationBarItem(
               label: 'Contacts',
