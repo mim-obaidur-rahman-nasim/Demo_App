@@ -3,3 +3,4 @@ analyzer:
   errors:
     prefer_const_constructors: ignore
     library_private_types_in_public_api: ignore
+    unused_field: ignore

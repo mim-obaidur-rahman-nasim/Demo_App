@@ -7,11 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  // Future<String> fetchData() async {
-  //   await Future.delayed(Duration(seconds: 3));
-  //   return "Data Loaded";
-  // }
-
   void _launchURL() {
     const url = 'https://youtube.com';
     launchUrl(Uri.parse(url));
@@ -29,8 +24,7 @@ class HomeScreen extends StatelessWidget {
               fontSize: 24,
             ),
           ),
-          const Expanded(child: DropDownSearch()),
-          // const SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -57,7 +51,6 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _launchURL,
                 child: const Text('Open URL'),
@@ -92,7 +85,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 80),
+          const Expanded(child: DropDownSearch()),
         ],
       ),
     );
