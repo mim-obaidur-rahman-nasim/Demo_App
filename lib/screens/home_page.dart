@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:navbar_pages/screens/form_page.dart';
+import 'package:navbar_pages/screens/saved_data.dart';
 import 'package:navbar_pages/screens/users_data.dart';
 import 'package:navbar_pages/widgets/alert_dialog.dart';
 import 'package:navbar_pages/widgets/dropdown_search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -84,6 +87,32 @@ class HomeScreen extends StatelessWidget {
                     'https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png'),
               ),
             ],
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserForm(),
+                ),
+              );
+            },
+            child: const Text('Show User Form'),
+          ),
+          ElevatedButton(
+            onPressed: ()async {
+              SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+             var items= prefs.getStringList('items');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SavedData(savedData: items,),
+                ),
+              );
+            },
+            child: const Text('Show User Details'),
           ),
           const Expanded(child: DropDownSearch()),
         ],

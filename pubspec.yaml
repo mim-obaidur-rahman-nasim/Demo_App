@@ -17,6 +17,7 @@ dependencies:
   flutter_inappwebview: ^6.1.0+1
   share_plus:
   shared_preferences: ^2.3.2
+  flutter_datetime_picker_plus: ^2.2.0
 
 dev_dependencies:
   flutter_test:

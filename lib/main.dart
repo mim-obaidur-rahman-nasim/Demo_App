@@ -3,6 +3,7 @@ import 'package:navbar_pages/screens/data/contacts_data.dart';
 import 'package:navbar_pages/screens/ebs.dart';
 import 'package:navbar_pages/screens/home_page.dart';
 import 'package:navbar_pages/screens/login_page.dart';
+import 'package:navbar_pages/screens/saved_data.dart';
 import 'package:navbar_pages/screens/signup_page.dart';
 import 'package:navbar_pages/screens/splash_screen.dart';
 import 'package:navbar_pages/screens/webview_page.dart';
@@ -22,9 +23,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/signup_page': (context) => SignupPage(),
-        '/login_page': (context) =>  LoginPage(),
+        '/login_page': (context) => LoginPage(),
         '/home_page': (context) => const MainApp(),
         '/ebs': (context) => const EbS(),
+        '/saved_data': (context) =>  SavedData(
+              savedData: [],
+            ),
       },
       home: SplashScreen(),
     );
