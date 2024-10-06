@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => const MainApp(),
         '/ebs': (context) => const EbS(),
         '/saved_data': (context) =>  SavedData(
-              savedData: [],
+              savedData: const [],
             ),
       },
       home: SplashScreen(),

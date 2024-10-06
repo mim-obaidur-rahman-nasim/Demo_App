@@ -6,11 +6,11 @@ class DatetimeField extends StatefulWidget {
   final String hintText;
 
   const DatetimeField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.icon,
     required this.hintText,
-  }) : super(key: key);
+  });
 
   @override
   State<DatetimeField> createState() => _DatetimeFieldState();

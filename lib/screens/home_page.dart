@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navbar_pages/screens/discount_club.dart';
 import 'package:navbar_pages/screens/form_page.dart';
 import 'package:navbar_pages/screens/saved_data.dart';
 import 'package:navbar_pages/screens/users_data.dart';
@@ -101,18 +102,30 @@ class HomeScreen extends StatelessWidget {
             child: const Text('Show User Form'),
           ),
           ElevatedButton(
-            onPressed: ()async {
-              SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-             var items= prefs.getStringList('items');
+            onPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              var items = prefs.getStringList('items');
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SavedData(savedData: items,),
+                  builder: (context) => SavedData(
+                    savedData: items,
+                  ),
                 ),
               );
             },
             child: const Text('Show User Details'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DiscountClub(),
+                ),
+              );
+            },
+            child: const Text('Discount Club'),
           ),
           const Expanded(child: DropDownSearch()),
         ],

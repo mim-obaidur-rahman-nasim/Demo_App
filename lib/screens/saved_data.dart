@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SavedData extends StatelessWidget {
   List<String>? savedData;
 
-  SavedData({Key? key, this.savedData}) : super(key: key);
+  SavedData({super.key, this.savedData});
 
   loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
