@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/login_page': (context) => LoginPage(),
         '/home_page': (context) => const MainApp(),
         '/ebs': (context) => const EbS(),
-        '/saved_data': (context) =>  SavedData(
+        '/saved_data': (context) => SavedData(
               savedData: const [],
             ),
       },
@@ -78,7 +78,10 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Appbar'),
+        title: const Text(
+          'My App',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: const Color.fromARGB(255, 91, 178, 222),
         actions: [
           Padding(

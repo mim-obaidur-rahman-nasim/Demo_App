@@ -1,58 +1,60 @@
+// import 'package:flutter/material.dart';
+
+// class DiscountCards extends StatelessWidget {
+//   const DiscountCards({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return GridView.count(
+//       crossAxisCount: 2,
+//       crossAxisSpacing: 10,
+//       mainAxisSpacing: 10,
+//       shrinkWrap: true,
+//       physics: const NeverScrollableScrollPhysics(),
+//       childAspectRatio: 3 / 4,
+//       children: const [
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Lab Science Diagnostics Center',
+//           category: 'Medical',
+//           location: '1205-Newmarket, Dhaka',
+//         ),
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Care-Box Limited',
+//           category: 'Medical',
+//           location: '1215-Tejgaon, Dhaka',
+//         ),
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Rainy Roof Restaurant',
+//           category: 'Restaurant',
+//           location: '1215-Tejgaon, Dhaka',
+//         ),
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Parjatan Motel Rajshahi',
+//           category: 'Hotel',
+//           location: '6000-Rajpara, Rajshahi',
+//         ),
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Puro Foods Limited',
+//           category: 'Restaurant',
+//           location: 'Anywhere in Bangladesh',
+//         ),
+//         DiscountCard(
+//           imagePath: 'assets/img/logo.png',
+//           title: 'Praava Health',
+//           category: 'Medical',
+//           location: '1212-Gulshan, Dhaka',
+//         ),
+//       ],
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
-
-class DiscountCards extends StatelessWidget {
-  const DiscountCards({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      childAspectRatio: 3 / 4,
-      children: const [
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Lab Science Diagnostics Center',
-          category: 'Medical',
-          location: '1205-Newmarket, Dhaka',
-        ),
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Care-Box Limited',
-          category: 'Medical',
-          location: '1215-Tejgaon, Dhaka',
-        ),
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Rainy Roof Restaurant',
-          category: 'Restaurant',
-          location: '1215-Tejgaon, Dhaka',
-        ),
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Parjatan Motel Rajshahi',
-          category: 'Hotel',
-          location: '6000-Rajpara, Rajshahi',
-        ),
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Puro Foods Limited',
-          category: 'Restaurant',
-          location: 'Anywhere in Bangladesh',
-        ),
-        DiscountCard(
-          imagePath: 'assets/img/logo.png',
-          title: 'Praava Health',
-          category: 'Medical',
-          location: '1212-Gulshan, Dhaka',
-        ),
-      ],
-    );
-  }
-}
 
 class DiscountCard extends StatelessWidget {
   final String imagePath;
@@ -83,8 +85,8 @@ class DiscountCard extends StatelessWidget {
             Center(
               child: Image.asset(
                 imagePath,
-                width: double.infinity,
-                fit: BoxFit.cover,
+                height: 55,
+                fit: BoxFit.contain,
               ),
             ),
             const SizedBox(height: 15),
@@ -137,6 +139,32 @@ class DiscountCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class DiscountCards extends StatelessWidget {
+  final List<Map<String, String>> cards;
+
+  const DiscountCards({super.key, required this.cards});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      childAspectRatio: 3 / 4,
+      children: cards.map((card) {
+        return DiscountCard(
+          imagePath: card['imagePath']!,
+          title: card['title']!,
+          category: card['category']!,
+          location: card['location']!,
+        );
+      }).toList(),
     );
   }
 }

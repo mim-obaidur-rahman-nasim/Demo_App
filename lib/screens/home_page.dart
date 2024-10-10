@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navbar_pages/screens/discount_club.dart';
 import 'package:navbar_pages/screens/form_page.dart';
 import 'package:navbar_pages/screens/saved_data.dart';
+import 'package:navbar_pages/screens/tab_bar.dart';
 import 'package:navbar_pages/screens/users_data.dart';
 import 'package:navbar_pages/widgets/alert_dialog.dart';
 import 'package:navbar_pages/widgets/dropdown_search.dart';
@@ -52,6 +53,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 6),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -73,6 +75,69 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 6),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UserForm(),
+                    ),
+                  );
+                },
+                child: const Text('Show User Form'),
+              ),
+              const SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  var items = prefs.getStringList('items');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SavedData(
+                        savedData: items,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text('Show User Details'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DiscountClub(),
+                    ),
+                  );
+                },
+                child: const Text('Discount Club'),
+              ),
+              const SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TabBarScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Tab Bar'),
+              ),
+            ],
+          ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,44 +153,6 @@ class HomeScreen extends StatelessWidget {
                     'https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png'),
               ),
             ],
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const UserForm(),
-                ),
-              );
-            },
-            child: const Text('Show User Form'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              var items = prefs.getStringList('items');
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SavedData(
-                    savedData: items,
-                  ),
-                ),
-              );
-            },
-            child: const Text('Show User Details'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const DiscountClub(),
-                ),
-              );
-            },
-            child: const Text('Discount Club'),
           ),
           const Expanded(child: DropDownSearch()),
         ],

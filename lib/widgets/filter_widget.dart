@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FilterOptions extends StatefulWidget {
-  const FilterOptions({Key? key}) : super(key: key);
+  final Function(String) onFilterSelected;
+  const FilterOptions({super.key, required this.onFilterSelected});
 
   @override
   _FilterOptionsState createState() => _FilterOptionsState();
@@ -17,7 +18,6 @@ class _FilterOptionsState extends State<FilterOptions> {
   ];
 
   final List<IconData> icons = [
-    Icons.all_inclusive,
     Icons.location_on,
     Icons.local_hospital,
     Icons.hotel,
@@ -40,6 +40,7 @@ class _FilterOptionsState extends State<FilterOptions> {
               onTap: () {
                 setState(() {
                   selectedFilter = label;
+                  widget.onFilterSelected(label);
                 });
               },
               child: Container(
@@ -55,11 +56,14 @@ class _FilterOptionsState extends State<FilterOptions> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      icons[filters.indexOf(label)],
-                      size: 16,
-                      color: isSelected ? Colors.blue : Colors.black,
-                    ),
+                    if (label != 'All') ...[
+                      Icon(
+                        icons[filters.indexOf(label) - 1],
+                        size: 16,
+                        color: isSelected ? Colors.blue : Colors.black,
+                      ),
+                      const SizedBox(width: 5),
+                    ],
                     const SizedBox(width: 5),
                     Text(
                       label,
