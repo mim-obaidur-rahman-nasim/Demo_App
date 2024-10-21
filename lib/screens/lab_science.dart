@@ -36,7 +36,7 @@ class _LabScienceState extends State<LabScience> {
         child: Column(
           children: [
             Image.asset('assets/img/lab_science.jpg'),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             RichText(
               text: TextSpan(
                 children: [
